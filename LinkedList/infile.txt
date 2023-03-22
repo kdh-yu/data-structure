@@ -1,10 +1,10 @@
-A 10003 Mike
-A 10000 Alice
-A 10010 Tom
-A 10010 Tim
+A 10003 Draco_Malfoy
+A 10000 Harry_Potter
+A 10010 Ron_Weasely
+A 10010 Ginny_Weasly
 F 10001
 F 10000
-A 10103 Sam
+A 10103 Severus_Snape
 D 10003
 D 10003
-A 10112 Lily
+A 10112 Hermione_Granger

@@ -102,7 +102,7 @@ class Course:
 
 if __name__ == "__main__":
   infile = "infile.txt"
-  outfile = "outfile_python.txt"
+  outfile = "outfile.txt"
   
   course = Course()
   with open(infile, 'r') as inFile:

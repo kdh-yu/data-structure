@@ -131,7 +131,7 @@ void Course::write(ofstream& outFile) {
 int main() {
   Course course;
   ifstream inFile("infile.txt");
-  ofstream outFile("outfile_cpp.txt");
+  ofstream outFile("outfile.txt");
   string line;
 
   while (getline(inFile, line)) {

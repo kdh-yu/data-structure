@@ -42,7 +42,8 @@ bool Course::addStudent(int id, string name) {
 
   else {
     Student* p = head;
-    while (p->id < id && p->next != nullptr) {
+    while (p->next != nullptr) {
+      if (p->id <= id && p->next->id > id) break;
       p = p->next;
     }
     // Same ID
@@ -50,7 +51,7 @@ bool Course::addStudent(int id, string name) {
       return false;
 
     // Insert node at the beginning
-    if (p == head) {
+    if (p == head && p->id > id) {
       stu->next = p;
       head = stu;
     }

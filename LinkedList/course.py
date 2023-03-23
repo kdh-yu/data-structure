@@ -29,7 +29,8 @@ class Course:
     
     else:
       p = self.head
-      while p.id < newID and p.next != None:
+      while p.next != None:
+        if p.id <= newID and p.next.id > newID: break
         p = p.next
 
       # Same ID
@@ -37,7 +38,7 @@ class Course:
         success = False
     
       # Insert node at the beginning
-      elif p == self.head:
+      elif p == self.head and p.id > newID:
         stu.next = self.head
         self.head = stu
       

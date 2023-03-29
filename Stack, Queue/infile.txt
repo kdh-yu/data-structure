@@ -1,0 +1,16 @@
+P level
+P hello
+P Nattan
+P Palindrome 
+P 123454321
+P DogsandCats
+P ()()
+P 1221
+B ([a])[b]({})
+B ([)]
+B So when I die (the [first] I will see in (heaven) is a score list)
+B [ first in ] ( first out )
+B Half Moon tonight (At least it is better than no Moon at all]
+B A rope may form )( a trail in a maze.
+B Help(I[m being held prisoner in a fortune cookie factory)]
+B ([(([([])()(())]))])

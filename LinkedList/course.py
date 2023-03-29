@@ -102,8 +102,9 @@ class Course:
     outFile.write('\n')
 
 if __name__ == "__main__":
-  infile = "infile.txt"
-  outfile = "outfile.txt"
+  infile = "infile.txt"  # sys.argv[1]
+  outfile = "outfile.txt"  # sys.argv[2]
+  
   
   course = Course()
   with open(infile, 'r') as inFile:

@@ -23,11 +23,14 @@ class BinarySearchTree:
     self.cur = self.root
 
   # Return True if tree is empty; False otherwise
+  # Just checking, so O(1)
   def isEmpty(self):
     return self.root == None
 
   # Given a sequence arr of integers, build a binary search (sub)tree.
   # Return the root node of the tree
+  # It is almost similar to divide part in merge sort.
+  # So time complexity is O(NlogN)
   def arrayToBST(self, arr: list[int]) -> TreeNode:
     if arr != sorted(arr) or not len(arr):
       return None
@@ -43,6 +46,8 @@ class BinarySearchTree:
     return root
 
   # Return the node with the minimum value 
+  # in balanced tree, height is O(logN)
+  # So, time complexity is O(logN)
   def findMin(self, st=None):
     if not st:
       ptr = self.root
@@ -53,6 +58,8 @@ class BinarySearchTree:
     return ptr
 
   # Return the node with the maximum value 
+  # in balanced tree, height is O(logN)
+  # So, time complexity is O(logN)
   def findMax(self, st=None):
     if not st:
       ptr = self.root
@@ -62,6 +69,7 @@ class BinarySearchTree:
       ptr = ptr.right
     return ptr
 
+  # O(logN)
   def _getHeight(self, curr):
     if not curr:
       return 0
@@ -105,6 +113,8 @@ class BinarySearchTree:
   # Given a query, search for the node whose key is equal to query.
   # If the node exists, return the key
   # Otherwise, return nullptr  
+  # On average, search function takes time complexity of O(logN).
+  # Here, N is the number of nodes in tree.
   def search(self, st, query):
     def s(p, k):
       if not p:
@@ -121,6 +131,7 @@ class BinarySearchTree:
 
   # Given an output file, write the keys of all the nodes 
   # visited in inorder traversal
+  # We need to visit all N nodes, so time complexity is O(N)
   def writeInorder(self, p, file):
     # Practice 6
     if p:
@@ -130,6 +141,7 @@ class BinarySearchTree:
 
   # Given an output file, write the keys of all the nodes 
   # visited in preorder traversal
+  # We need to visit all N nodes, so time complexity is O(N)
   def writePreorder(self, p, file):
     # Practice 6
     # TODO
@@ -140,6 +152,7 @@ class BinarySearchTree:
   
   # Given an output file, write the keys of all the nodes 
   # visited in postorder traversal
+  # We need to visit all N nodes, so time complexity is O(N)
   def writePostorder(self, p, file):
     # Practice 6
     # TODO
@@ -150,6 +163,9 @@ class BinarySearchTree:
   
   # If node with key k alreay exists in the tree, do nothing
   # Otherwise, insert new node with key k 
+  # Find location to insert : same with search, so O(logN)
+  # Adding Nodes : O(1)
+  # So, time complexity is O(logN)
   def insertNode(self, p, k):
     # Practice 7
     if p == None:
@@ -162,6 +178,11 @@ class BinarySearchTree:
       
   # If deletion fails, immediately terminate the program
   # Otherwise, delete the node with key k
+  # It takes tree's root and key to remove, and returns root node of that subtree.
+  # When calling, we just need to call like this:
+  # tree.root = tree.deleteNode(tree.root, key)
+  # On average, time complexity is O(logN).
+  # Here, N is the number of nodes in tree.
   def deleteNode(self, r: TreeNode, k: int) -> TreeNode:
     if r == None:
       return None

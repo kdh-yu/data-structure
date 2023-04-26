@@ -40,6 +40,7 @@ public:
 
   TreeNode* arrayToBST(vector<int>&);
   // Return true if tree is empty; false otherwise
+  // O(1)
   bool isEmpty() { return (root == nullptr); }
   TreeNode* findMin();
   TreeNode* findMax();
@@ -85,6 +86,8 @@ BinarySearchTree::~BinarySearchTree() {
 // Given a sequence arr of integers, start index l, the end index r, 
 // build a binary search (sub)tree that contains keys in arr[l], ..., arr[r].
 // Return the root node of the tree
+// It is almost similar to divide part in merge sort.
+// So time complexity is O(NlogN)
 TreeNode* BinarySearchTree::arrayToBST(vector<int>& arr) {
   if (arr.size() == 0) return nullptr;
   for (int i=0; i<arr.size()-1; i++)
@@ -106,6 +109,9 @@ TreeNode* BinarySearchTree::arrayToBST(vector<int>& arr) {
 }
 
 // Return the node with the minimum value 
+// in balanced tree, height is O(logN).
+// so time complexity is O(logN)
+// Here, N is the number of nodes in tree.
 TreeNode* BinarySearchTree::findMin() {
   TreeNode* ptr = root;
   while (ptr->left != nullptr)
@@ -114,6 +120,9 @@ TreeNode* BinarySearchTree::findMin() {
 }
 
 // Return the node with the maximum value 
+// in balanced tree, height is O(logN).
+// so time complexity is O(logN)
+// Here, N is the number of nodes in tree.
 TreeNode* BinarySearchTree::findMax() {
   TreeNode* ptr = root;
   while (ptr->right != nullptr)
@@ -124,6 +133,8 @@ TreeNode* BinarySearchTree::findMax() {
 // Given a query, search for the node whose key is equal to query.
 // If the node exists, return the key
 // Otherwise, return nullptr
+// on average, time complexity is O(logN)
+// Here, N is the number of nodes in tree.
 TreeNode* BinarySearchTree::search(TreeNode* ptr, int query) {
   if (ptr == nullptr) return nullptr;
   // Practice 6
@@ -138,6 +149,9 @@ TreeNode* BinarySearchTree::search(TreeNode* ptr, int query) {
 
 // If node with key k alreay exists in the tree, do nothing
 // Otherwise, insert a new node with key k 
+// Find location to insert : same with search, so O(logN)
+// Adding Nodes : O(1)
+// So, time complexity is O(logN)
 void BinarySearchTree::insertNode(int k) {
   // TODO. Practice 7
   if (root == nullptr) 
@@ -152,7 +166,11 @@ void BinarySearchTree::insertNode(int k) {
 }
 // If deletion fails, immediately terminate the program
 // Otherwise, delete the node with key k
-
+// It takes tree's root and key to remove, and returns root node of that subtree.
+// When calling, we just need to call like this:
+// tree->root = tree->deleteNode(tree->root, key)
+// On average, time complexity is O(logN).
+// Here, N is the number of nodes in tree.
 TreeNode* BinarySearchTree::deleteNode(TreeNode* root_, int k) {
   if (root_ == nullptr) return nullptr;
   if (k < root_->key) 
@@ -176,6 +194,7 @@ TreeNode* BinarySearchTree::deleteNode(TreeNode* root_, int k) {
 
 // Given an output file stream, write the keys of all the nodes 
 // visited in inorder traversal
+// We need to visit all N nodes, so time complexity is O(N)
 void BinarySearchTree::writeInorder(ofstream& outFile, TreeNode* ptr) {
   // Practice 6
   if (ptr != nullptr) {
@@ -187,6 +206,7 @@ void BinarySearchTree::writeInorder(ofstream& outFile, TreeNode* ptr) {
 
 // Given an output file stream, write the keys of all the nodes 
 // visited in preorder traversal
+// We need to visit all N nodes, so time complexity is O(N)
 void BinarySearchTree::writePreorder(ofstream& outFile, TreeNode* ptr) {
   // Practice 6
   if (ptr != nullptr) {
@@ -198,6 +218,7 @@ void BinarySearchTree::writePreorder(ofstream& outFile, TreeNode* ptr) {
 
 // Given an output file stream, write the keys of all the nodes 
 // visited in postorder traversal
+// We need to visit all N nodes, so time complexity is O(N)
 void BinarySearchTree::writePostorder(ofstream& outFile, TreeNode* ptr) {
   // Practice 6
   if (ptr != nullptr) {
@@ -207,6 +228,7 @@ void BinarySearchTree::writePostorder(ofstream& outFile, TreeNode* ptr) {
   }
 }
 
+// O(logN)
 int BinarySearchTree::_getHeight(TreeNode* curr) {
   if (curr == nullptr) 
     return 0;

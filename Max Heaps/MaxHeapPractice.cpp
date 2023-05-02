@@ -105,6 +105,7 @@ int MaxHeap::deleteMaximum() {
   }
   int largest = this->elements[0];
   this->elements[0] = this->elements[this->count - 1];
+  this->elements[this->count - 1] = 0;
   this->count--;
   this->maxHeapify(0);
   return largest;

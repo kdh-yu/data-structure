@@ -66,6 +66,7 @@ class MaxHeap:
     
     maxElement = self.elements[0]
     self.elements[0] = self.elements[self.count - 1]
+    self.elements[self.count - 1] = 0
     self.count -= 1
     self.MaxHeapify(0)
     return maxElement

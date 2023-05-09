@@ -1,6 +1,6 @@
 # Practice 10. Graph Representation 
+import sys
 from collections import deque
-from pprint import pprint
 CONSTRUCT = 'C'
 IS_ADJACENT = 'I'
 GET_NEIGHBORS = 'N'
@@ -18,6 +18,8 @@ class Graph:
   def AddVertice(self, v1, v2, w):
     if self.adjacency.get(v1) == None:
       self.adjacency[v1] = []
+    if self.adjacency.get(v2) == None:
+      self.adjacency[v2] = []
     self.adjacency[v1].append((v2, w))
 
   def IsAdjacent(self, v1, v2):
@@ -31,15 +33,31 @@ class Graph:
     for tmp in self.adjacency[v]:
       adjacency.append(str(tmp[0]))
     return adjacency
+  
+  def DepthFirstSearch(self, st):
+    visited = []
+    def DFS(u, l):
+      l.append(u)
+      for (v, w) in self.adjacency[u]:
+        if v not in l:
+          DFS(v, l)
+    DFS(st, visited)
+    visited = [str(i) for i in visited]
+    return " ".join(visited)
 
+  def BreadthFirstSearch(self):
+    pass
 
-if __name__ == "__main__":
+  def PrintGraph(self):
+    for i in self.adjacency.keys():
+      print(f"{i} : {self.adjacency[i]}")
+
+if __name__ == "__main__":  
   g = Graph()
   with open('input.txt', 'r') as inFile:
     lines = inFile.readlines()
   with open('output.txt', 'w') as outFile:
     i = 0
-
     while i < len(lines):
       words = lines[i].split()
       op = words[0]
@@ -67,6 +85,20 @@ if __name__ == "__main__":
         outFile.write(" ".join(g.Neighbors(u)))
         outFile.write('\n')
 
+      elif op == DFS:
+        outFile.write(g.DepthFirstSearch(int(words[1])))
+        outFile.write("\n")
+
+      elif op == BFS:
+        pass
+
+      elif op == TOPOLOGICAL_SORT:
+        pass
+      
+      elif op == SHORTEST_PATH:
+        pass
+
       else:
         raise Exception("Undefined operator")
+      
       i += 1

@@ -45,7 +45,7 @@ def balance(string: str) -> bool:
 if __name__ == "__main__":
   # Instead of using "python practice4.py input.txt output.txt", just use it
   # for vscode code runner...
-  inputfile = "infile.txt"
+  inputfile = "input2.txt"
   outputfile = "outfile.txt"
   with open(inputfile, 'r') as inFile:
     lines = inFile.readlines()

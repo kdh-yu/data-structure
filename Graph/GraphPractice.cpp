@@ -52,7 +52,6 @@ string Graph::Neighbors(int v) {
     neighbors += to_string(adjacency[v][i].first) + " ";
   return neighbors;
 }
-
  
 int main() {
   Graph g;

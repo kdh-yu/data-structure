@@ -24,18 +24,18 @@ const char SHORTEST_PATH = 'S';
 
 class Graph {
 public:
-int nodes;
-map<int, vector<pair<int, int> > > adjacency;
-// TODO. Define a constructor, a destructor, and proper methods
+  int nodes;
+  map<int, vector<pair<int, int> > > adjacency;
+  // TODO. Define a constructor, a destructor, and proper methods
 
-void AddVertice(int, int, int);
-string IsAdjacent(int, int);
-string Neighbors(int);
-string BreadthFirstSearch(int);
-string DepthFirstSearch(int);
-string TopologicalSort();
-int InDegree(int);
-void PrintGraph();
+  void AddVertice(int, int, int);
+  string IsAdjacent(int, int);
+  string Neighbors(int);
+  string BreadthFirstSearch(int);
+  string DepthFirstSearch(int);
+  string TopologicalSort();
+  int InDegree(int);
+  void PrintGraph();
 };
 
 void Graph::AddVertice(int v1, int v2, int weight) {

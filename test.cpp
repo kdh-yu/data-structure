@@ -1,9 +1,11 @@
+#include <unordered_map>
 #include <iostream>
 using namespace std;
 
 int main() {
-    int i = 9, j = 8;
-    i = i / 2;
-    j = j / 2;
-    cout << i << " " << j << endl;
+    unordered_map<int, bool> map;
+    map[1] = true;
+    cout << map[1] << endl;
+    cout << map[2] << endl;
+    cout << true << endl;
 }

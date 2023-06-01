@@ -1,22 +1,19 @@
-def balance(s):
-    opening = '{(['
-    closing = '}])'
-    matching = {'}' : '{', ')': '(', ']' : '['}
-    stack = []
-    for c in s:
-        if c in opening:
-            stack.append(c)
-        elif c in closing:
-            if not stack:
-                stack.append(c)
-            elif stack[-1] == matching[c]:
-                stack.pop()
-            else: stack.append(c)
-    return (len(stack)==0)
+arr = [1,2,3,4]
 
-print(balance('([a])[b]({})'))
-print(balance('([)]))'))
-print(balance('(([])'))
-print(balance('([]))'))
-print(balance('([{}])'))
-print(balance('([()])'))
+def Partition(L, low, high):
+  pivot = L[high]
+  l = low
+  r = high
+  while l < r:
+    while L[l] > pivot:
+      l += 1
+    while L[r] <= pivot:
+      r -= 1
+    if l < r:
+      L[l], L[r] = L[r], L[l]
+  L[r], L[high] = L[high], L[r]
+  return r
+
+print(arr)
+p = Partition(arr, 0, 2)
+print(arr)

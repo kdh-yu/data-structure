@@ -1,50 +1,47 @@
 # Practice 13. Sorting 
 from math import floor
-MERGE_SORT = 'M';
-QUICK_SORT = 'Q';
+MERGE_SORT = 'M'
+QUICK_SORT = 'Q'
 
 def Merge(L1, L2):
-  L = []
+  tmp = []
   while L1 and L2:
     if L1[0] > L2[0]:
-      L.append(L1.pop(0))
+      tmp.append(L1.pop(0))
     else:
-      L.append(L2.pop(0))
+      tmp.append(L2.pop(0))
   l = L1 if L1 else L2
-  L = L + l
-  return L
+  tmp = tmp + l
+  return tmp
 
 def MergeSort(L):
-  if len(L) > 1:
-    m = floor(len(L)/2)
-    L1 = L[:m]
-    L2 = L[m:]
-    L = Merge(MergeSort(L1), MergeSort(L2))
-  return L
+  if len(L) <= 1:
+    return L
+  mid = len(L) // 2
+  L1 = MergeSort(L[:mid])
+  L2 = MergeSort(L[mid:])
+  tmp = Merge(L1, L2)
+  return tmp
 
-def Partition(L, i, j):
-  pivot = L[-1]
-  while i < j:
-    if L[i] > L[j]:
-      L[i], L[j] = L[j], L[i]
-    else:
-      while L[i] <= pivot:
-        i += 1
-      while L[j] > pivot:
-        j -= 1
-  return i
+def Partition(L, low, high):
+  pivot = L[high]
+  l = low
+  r = high
+  while l < r:
+    while l < high and L[l] > pivot:
+      l += 1
+    while r > low and L[r] <= pivot:
+      r -= 1
+    if l < r:
+      L[l], L[r] = L[r], L[l]
+  L[l], L[high] = L[high], L[l]
+  return l
 
-def QuickSort(L, p, r):
-  if p < r:
-    q = Partition(L, p, r)
-    L1 = QuickSort(L, p, q-1)
-    L2 = QuickSort(L, q+1, r)
-    for i in range(len(L1)):
-      L[i] = L1[i]
-    for j in range(len(L2)):
-      L[q+j] = L2[j]
-    print(L)
-  return L
+def QuickSort(L, l, r):
+  if l < r:
+    p = Partition(L, l, r)
+    QuickSort(L, l, p-1)
+    QuickSort(L, p+1, r)
 
 if __name__ == "__main__":
   with open('input.txt', 'r') as inFile:
@@ -71,9 +68,10 @@ if __name__ == "__main__":
       elif op == QUICK_SORT:
         if len(line) != 2:
           raise Exception("QUICK_SORT: invalid input")
-        # TODO
         QuickSort(arr, 0, len(arr)-1)
-        pass
+        sortedList = [str(j) for j in arr]
+        outFile.write(" ".join(sortedList))
+        outFile.write("\n")
 
       else:
         raise Exception("Undefined operator")

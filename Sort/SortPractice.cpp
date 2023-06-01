@@ -44,9 +44,9 @@ int Partition(vector<int>& L, int low, int high) {
   int left = low, right = high;
   
   while (left < right) {
-    while (L[left] < pivot)
+    while (L[left] > pivot)
       left++;
-    while (L[right] >= pivot)
+    while (L[right] <= pivot)
       right--;
     if (left < right)
       swap(L[left], L[right]);
